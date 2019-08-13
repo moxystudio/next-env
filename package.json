@@ -1,6 +1,6 @@
 {
   "name": "@moxy/next-runtime-env",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "NextJS plugin to pass environment variables to NextJS's runtime configuration",
   "author": "Ivo Lima Silva <ivolimasilva@outlook.com>",
   "main": "./index.js",
