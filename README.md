@@ -14,11 +14,11 @@
 [david-dm-dev-url]:https://david-dm.org/moxystudio/next-runtime-env?type=dev
 [david-dm-dev-image]:https://img.shields.io/david/dev/moxystudio/next-runtime-env.svg
 
-NextJS plugin to pass environment variables to NextJS's runtime configuration.
+Next.js plugin to pass environment variables to Next.js' runtime configuration.
 
-By default, NextJS does not make available `process.env` to the client side. The available solution for this problem is to set a runtime config in `next.config.js` to pass values which will be available in either server and client or just server.
+By default, Next.js does not make available `process.env` to the client side. The available solution for this problem is to set a runtime config in `next.config.js` to pass values which will be available in either server and client or just server.
 
-The way to do it is by passing values to the `publicRuntimeConfig` and `serverRuntimeConfig` properties of the NextJS' config.
+The way to do it is by passing values to the `publicRuntimeConfig` and `serverRuntimeConfig` properties of Next.js' config.
 
 This plugin does that automatically for all environment variables starting with a certain prefix.
 
