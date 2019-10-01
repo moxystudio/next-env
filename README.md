@@ -18,7 +18,9 @@ Next.js plugin to pass environment variables to Next.js' runtime configuration.
 
 By default, Next.js does not make available `process.env` to the client side. The available solution for this problem is to set a runtime config in `next.config.js` to pass values which will be available in either server and client or just server.
 
-The way to do it is by passing values to the `publicRuntimeConfig` and `serverRuntimeConfig` properties of Next.js' config.
+The way to do it is by passing values to the `publicRuntimeConfig`, `serverRuntimeConfig` and `env` properties of Next.js' config.
+
+*More info: https://nextjs.org/docs#build-time-configuration*
 
 This plugin does that automatically for all environment variables starting with a certain prefix.
 
@@ -53,12 +55,30 @@ module.exports = withCSS(
 );
 ```
 
+Application usage:
+
+```js
+// next.config.js
+const withRuntimeEnv = require('@moxy/next-runtime-env');
+
+module.exports = withRuntimeEnv({ removePrefixes: true })({ ...nextConfig });
+
+// environment variables definition
+PUBLIC_FOO="bar"
+BUILD_BAR="compile-me-please"
+
+// app.js
+const x = process.env.FOO; // "bar"
+const y = "compile-me-please" // original code was `const y = process.env.BAR;
+```
+
 ### API
 
 | Option | Description | Type | Default |
 |---|--------------------------------------------------------------------|---------|-----------|
 | publicPrefix | Prefix of variables to lookup and then pass to publicRuntimeConfig | String | `PUBLIC_` |
 | serverPrefix | Prefix of variables to lookup and then pass to serverRuntimeConfig | String | `SERVER_` |
+| buildPrefix  | Prefix of variables to lookup and then pass to env to be injected in compile-time | String | `BUILD_` |
 | removePrefixes | Option to remove prefix when passing variables to runtime config | Boolean | `false` |
 
 ## Tests
@@ -67,7 +87,6 @@ Any parameter passed to the `test` command, is passed down to Jest.
 
 ```sh
 $ npm t
-$ npm t -- --coverage # to generate coverage report
 $ npm t -- --watch # during development
 ```
 
