@@ -23,7 +23,7 @@ const buildConfig = (keys, initialConfig, prefix, { removePrefixes }) => {
  * @param {Object} options
  * @param {String} options.publicPrefix     Prefix of variables to lookup and then pass to publicRuntimeConfig
  * @param {String} options.serverPrefix     Prefix of variables to lookup and then pass to serverRuntimeConfig
- * @param {String} options.buildPrefix     Prefix of variables to lookup and then pass to buildRuntimeConfig
+ * @param {String} options.buildPrefix      Prefix of variables to lookup and then pass to buildRuntimeConfig
  * @param {String} options.removePrefixes   Option to remove prefix when passing variables to config
  */
 
