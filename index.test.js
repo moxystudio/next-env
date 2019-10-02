@@ -156,3 +156,13 @@ it('should return the default values for the others when there is only the build
         env: { NEXT_BUILD_TEST_FOO: 'bar' },
     });
 });
+
+it('should not override existing process.env variables when the removeSuffix is activated', () => {
+    process.env = { FOO: 'dont replace me please', NEXT_PUBLIC_FOO: 'replaced :)' };
+
+    const plugin = runtimeEnv({ removePrefixes: true });
+
+    try { plugin(); } catch (e) {
+        expect(plugin).toThrowError(/^Failed to override existing environment variable "FOO"/);
+    }
+});

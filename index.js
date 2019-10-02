@@ -5,6 +5,10 @@ const buildConfig = (keys, initialConfig, prefix, { removePrefixes }) => {
         if (re.test(key)) {
             const name = removePrefixes ? key.replace(prefix, '') : key;
 
+            if (removePrefixes && process.env[name]) {
+                throw new Error(`Failed to override existing environment variable "${name}" while using the removePrefixes option. Please consider renaming the variable or changing the option.`);
+            }
+
             return {
                 ...acc,
                 [name]: process.env[key],
