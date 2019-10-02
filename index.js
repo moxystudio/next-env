@@ -27,7 +27,7 @@ const buildConfig = (keys, initialConfig, prefix, { removePrefixes }) => {
  * @param {String} options.removePrefixes   Option to remove prefix when passing variables to config
  */
 
-const newNextConfig = (options = {}) => (nextConfig = {}) => {
+module.exports = (options = {}) => (nextConfig = {}) => {
     const {
         publicPrefix = 'NEXT_PUBLIC_',
         serverPrefix = 'NEXT_SERVER_',
@@ -49,5 +49,3 @@ const newNextConfig = (options = {}) => (nextConfig = {}) => {
 
     return { ...nextConfig, publicRuntimeConfig, serverRuntimeConfig, env };
 };
-
-module.exports = newNextConfig;
