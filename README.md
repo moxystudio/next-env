@@ -62,23 +62,27 @@ Application usage:
 const withRuntimeEnv = require('@moxy/next-runtime-env');
 
 module.exports = withRuntimeEnv({ removePrefixes: true })({ ...nextConfig });
+```
 
-// environment variables definition
-PUBLIC_FOO="bar"
-BUILD_BAR="compile-me-please"
+```sh
+# environment variables definition
+NEXT_PUBLIC_FOO="bar"
+NEXT_BUILD_BAR="compile-me-please"
+```
 
+```js
 // app.js
-const x = process.env.FOO; // "bar"
-const y = "compile-me-please" // original code was `const y = process.env.BAR;
+const x = process.env.FOO; // 'bar'
+const y = 'compile-me-please' // original code was `const y = process.env.BAR;
 ```
 
 ### API
 
 | Option | Description | Type | Default |
 |---|--------------------------------------------------------------------|---------|-----------|
-| publicPrefix | Prefix of variables to lookup and then pass to publicRuntimeConfig | String | `PUBLIC_` |
-| serverPrefix | Prefix of variables to lookup and then pass to serverRuntimeConfig | String | `SERVER_` |
-| buildPrefix  | Prefix of variables to lookup and then pass to env to be injected in compile-time | String | `BUILD_` |
+| publicPrefix | Prefix of variables to lookup and then pass to publicRuntimeConfig | String | `NEXT_PUBLIC_` |
+| serverPrefix | Prefix of variables to lookup and then pass to serverRuntimeConfig | String | `NEXT_SERVER_` |
+| buildPrefix  | Prefix of variables to lookup and then pass to env to be injected in compile-time | String | `NEXT_BUILD_` |
 | removePrefixes | Option to remove prefix when passing variables to runtime config | Boolean | `false` |
 
 ## Tests
