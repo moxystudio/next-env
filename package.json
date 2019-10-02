@@ -1,7 +1,7 @@
 {
-  "name": "@moxy/next-runtime-env",
+  "name": "@moxy/next-env",
   "version": "1.0.1",
-  "description": "Next.js plugin to pass environment variables to Next's runtime configuration",
+  "description": "Next.js plugin to pass environment variables to Next's configuration",
   "author": "Ivo Lima Silva <ivolimasilva@outlook.com>",
   "main": "./index.js",
   "keywords": [
@@ -10,13 +10,12 @@
     "plugins",
     "environment",
     "env",
-    "dotenv",
-    "runtime"
+    "dotenv"
   ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:moxystudio/next-runtime-env.git"
+    "url": "git@github.com:moxystudio/next-env.git"
   },
   "scripts": {
     "lint": "eslint .",
