@@ -29,9 +29,9 @@ const buildConfig = (keys, initialConfig, prefix, { removePrefixes }) => {
 
 const runtimeEnv = (options = {}) => (nextConfig = {}) => {
     const {
-        publicPrefix = 'PUBLIC_',
-        serverPrefix = 'SERVER_',
-        buildPrefix = 'BUILD_',
+        publicPrefix = 'NEXT_PUBLIC_',
+        serverPrefix = 'NEXT_SERVER_',
+        buildPrefix = 'NEXT_BUILD_',
         removePrefixes = false,
     } = options;
 
