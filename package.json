@@ -10,7 +10,9 @@
     "plugins",
     "environment",
     "env",
-    "dotenv"
+    "dotenv",
+    "runtime",
+    "buildtime"
   ],
   "license": "MIT",
   "repository": {
