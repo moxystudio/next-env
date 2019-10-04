@@ -67,13 +67,22 @@ module.exports = withEnv({ removePrefixes: true })({ ...nextConfig });
 ```sh
 # environment variables definition
 NEXT_PUBLIC_FOO="bar"
+NEXT_SERVER_FOO="foo"
 NEXT_BUILD_BAR="compile-me-please"
 ```
 
 ```js
 // app.js
-const x = process.env.FOO; // 'bar'
+const { publicRuntimeConfig } = getConfig():
+
+const x = publicRuntimeConfig.FOO; // 'bar'
 const y = 'compile-me-please' // original code was `const y = process.env.BAR;
+
+
+// server.js
+const { serverRuntimeConfig } = getConfig():
+
+const x = serverRuntimeConfig.FOO; // 'foo'
 ```
 
 ### API
