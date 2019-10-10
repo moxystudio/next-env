@@ -17,17 +17,7 @@ const buildConfig = (keys, initialConfig, prefix, { removePrefixes }) => {
     return config;
 };
 
-/**
- * NextJS plugin to pass environment variables to NextJS's configuration (`publicRuntimeConfig`, `serverRuntimeConfig` and `env`)
- *
- * @param {Object} options
- * @param {String} options.publicPrefix     Prefix of variables to lookup and then pass to publicRuntimeConfig
- * @param {String} options.serverPrefix     Prefix of variables to lookup and then pass to serverRuntimeConfig
- * @param {String} options.buildPrefix      Prefix of variables to lookup and then pass to buildRuntimeConfig
- * @param {String} options.removePrefixes   Option to remove prefix when passing variables to config
- */
-
-module.exports = (options = {}) => (nextConfig = {}) => {
+const withEnv = (options = {}) => (nextConfig = {}) => {
     const {
         publicPrefix = 'NEXT_PUBLIC_',
         serverPrefix = 'NEXT_SERVER_',
@@ -49,3 +39,5 @@ module.exports = (options = {}) => (nextConfig = {}) => {
 
     return { ...nextConfig, publicRuntimeConfig, serverRuntimeConfig, env };
 };
+
+module.exports = withEnv;
