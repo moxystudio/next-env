@@ -1,3 +1,5 @@
+'use strict';
+
 const envPlugin = require('.');
 
 const originalEnv = process.env;
