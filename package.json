@@ -23,7 +23,8 @@
     "lint": "eslint .",
     "test": "jest --coverage",
     "prerelease": "npm t && npm run lint",
-    "release": "standard-version"
+    "release": "standard-version",
+    "postrelease": "git push --follow-tags origin master && npm publish"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.1.0",
