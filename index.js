@@ -1,3 +1,5 @@
+'use strict';
+
 const buildConfig = (keys, initialConfig, prefix, { removePrefixes }) => {
     const re = new RegExp(`^${prefix}`, 'i');
 
