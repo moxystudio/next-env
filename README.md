@@ -27,7 +27,7 @@ This plugin does that automatically for all environment variables starting with 
 ## Installation
 
 ```sh
-$ npm i --save-dev @moxy/next-env
+$ npm i --save @moxy/next-env
 ```
 
 ## Usage
