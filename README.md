@@ -85,7 +85,7 @@ const { serverRuntimeConfig } = getConfig():
 const x = serverRuntimeConfig.FOO; // 'foo'
 ```
 
-### API
+### Available options
 
 | Option | Description | Type | Default |
 |---|--------------------------------------------------------------------|---------|-----------|
