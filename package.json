@@ -3,7 +3,8 @@
   "version": "2.0.0",
   "description": "Next.js plugin to pass environment variables to Next's configuration",
   "author": "Ivo Lima Silva <ivolimasilva@outlook.com>",
-  "main": "./index.js",
+  "main": "index.js",
+  "files": [],
   "keywords": [
     "next",
     "nextjs",
