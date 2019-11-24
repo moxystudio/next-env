@@ -6,7 +6,7 @@
 [downloads-image]:https://img.shields.io/npm/dm/@moxy/next-env.svg
 [npm-image]:https://img.shields.io/npm/v/@moxy/next-env.svg
 [travis-url]:https://travis-ci.org/moxystudio/next-env
-[travis-image]:http://img.shields.io/travis/moxystudio/next-env/master.svg
+[travis-image]:https://img.shields.io/travis/moxystudio/next-env/master.svg
 [codecov-url]:https://codecov.io/gh/moxystudio/next-env
 [codecov-image]:https://img.shields.io/codecov/c/github/moxystudio/next-env/master.svg
 [david-dm-url]:https://david-dm.org/moxystudio/next-env
@@ -105,4 +105,4 @@ $ npm t -- --watch # during development
 
 ## License
 
-Released under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
+Released under the [MIT License](https://www.opensource.org/licenses/mit-license.php).
