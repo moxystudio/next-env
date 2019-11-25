@@ -1,43 +1,33 @@
 'use strict';
 
-const set = require('lodash/get');
+const path = require('path');
+const webpack = require('webpack');
+const poison = require('require-poisoning');
 
-const keyMappings = {
-    public: 'publicRuntimeConfig',
-    server: 'serverRuntimeConfig',
-    build: 'env',
-};
+const withProcessEnv = () => (nextConfig = {}) => ({
+    ...nextConfig,
+    webpack: (config, options) => {
+        const oldRuntimeConfig = require('next/dist/next-server/lib/runtime-config');
 
-const withEnv = (vars) => (nextConfig = {}) => {
-    const envConfig = vars.reduce((envConfig, env) => {
-        const key = keyMappings[env.type];
+        console.log('old', oldRuntimeConfig);
 
-        if (!key) {
-            throw new Error(`Unknown environment variable type '${env.type}'`);
+        poison(require.resolve('next/dist/next-server/lib/runtime-config'), require('./lib/runtime-config'));
+
+        require('next/dist/next-server/lib/runtime-config').setConfig(oldRuntimeConfig.default());
+
+        config.resolve.alias['next/config'] = path.resolve(__dirname, 'lib/runtime-config.js');
+
+        config.plugins.push(new webpack.NormalModuleReplacementPlugin(
+            /next\/dist\/next-server\/lib\/runtime-config/,
+            path.resolve(__dirname, 'lib/runtime-config.js'),
+        ));
+
+        if (typeof nextConfig.webpack === 'function') {
+            return nextConfig.webpack(config, options);
         }
 
-        const value = process.env[env.name];
+        return config;
+    },
+});
 
-        set(envConfig, `${env.type}.${env.name}`, value != null ? value : env.default);
-
-        return envConfig;
-    }, {
-        publicRuntimeConfig: { ...nextConfig.publicRuntimeConfig },
-        serverRuntimeConfig: { ...nextConfig.serverRuntimeConfig },
-        env: { ...nextConfig.env },
-    });
-
-    return {
-        ...nextConfig,
-        ...envConfig,
-        webpack: (config, options) => {
-            if (typeof nextConfig.webpack === 'function') {
-                return nextConfig.webpack(config, options);
-            }
-
-            return config;
-        },
-    };
-};
-
-module.exports = withEnv;
+module.exports = withProcessEnv;

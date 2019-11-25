@@ -1,10 +1,12 @@
 {
-  "name": "@moxy/next-env",
+  "name": "@moxy/next-process-env",
   "version": "2.0.1",
   "description": "Next.js plugin to pass environment variables to Next's configuration",
   "author": "Ivo Lima Silva <ivolimasilva@outlook.com>",
   "main": "index.js",
-  "files": [],
+  "files": [
+    "lib"
+  ],
   "keywords": [
     "next",
     "nextjs",
@@ -18,18 +20,22 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:moxystudio/next-env.git"
+    "url": "git@github.com:moxystudio/next-process-env.git"
   },
   "scripts": {
-    "lint": "eslint .",
-    "test": "jest --coverage",
-    "prerelease": "npm t && npm run lint",
+    "build": "BABEL_ENV=commonjs babel src -d lib --delete-dir-on-start",
+    "lint": "eslint . --ignore-path .gitignore",
+    "test": "jest",
+    "prerelease": "npm t && npm run lint && npm run build",
     "release": "standard-version",
     "postrelease": "git push --follow-tags origin master && npm publish"
   },
   "devDependencies": {
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.7.4",
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.1.0",
+    "@moxy/babel-preset": "^3.2.1",
     "eslint": "^5.16.0",
     "eslint-config-moxy": "^8.1.0",
     "husky": "^3.0.3",
@@ -41,6 +47,6 @@
     "next": ">=8.0.0 <=9.0.0"
   },
   "dependencies": {
-    "lodash": "^4.17.15"
+    "require-poisoning": "^2.0.0"
   }
 }
